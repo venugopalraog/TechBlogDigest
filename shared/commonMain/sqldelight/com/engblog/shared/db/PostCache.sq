@@ -1,0 +1,20 @@
+CREATE TABLE PostEntity (
+    id INTEGER NOT NULL PRIMARY KEY,
+    sourceId TEXT NOT NULL,
+    sourceName TEXT NOT NULL,
+    title TEXT NOT NULL,
+    link TEXT NOT NULL,
+    publishedAt TEXT NOT NULL,
+    summary TEXT,
+    tags TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM PostEntity ORDER BY publishedAt DESC;
+
+countAll:
+SELECT COUNT(*) FROM PostEntity;
+
+insertOrReplace:
+INSERT OR REPLACE INTO PostEntity(id, sourceId, sourceName, title, link, publishedAt, summary, tags)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?);
