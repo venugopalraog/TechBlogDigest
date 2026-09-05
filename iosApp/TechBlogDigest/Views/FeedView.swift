@@ -19,7 +19,7 @@ struct FeedView: View {
 
     var body: some View {
         content
-            .navigationTitle("Engineering Blog Digest")
+            .navigationTitle("Tech Blog Digest")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     NavigationLink("Settings") {

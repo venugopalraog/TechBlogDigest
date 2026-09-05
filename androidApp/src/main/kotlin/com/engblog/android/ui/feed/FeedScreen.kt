@@ -52,7 +52,7 @@ fun FeedScreen(onOpenSettings: () -> Unit, viewModel: FeedViewModel = koinViewMo
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Engineering Blog Digest") },
+                title = { Text("Tech Blog Digest") },
                 actions = {
                     IconButton(onClick = viewModel::refresh) {
                         Icon(Icons.Default.Refresh, contentDescription = "Refresh feed")

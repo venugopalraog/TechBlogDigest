@@ -13,17 +13,17 @@ drop these Swift files in.
 ## 1. Create the Xcode project
 
 1. Xcode → File → New → Project → iOS → App.
-2. Product Name: `EngBlogDigest`. Interface: SwiftUI. Save it into this
-   `iosApp/` directory (so `iosApp/EngBlogDigest.xcodeproj` sits next to the
-   `EngBlogDigest/` source folder already here).
-3. Delete the placeholder `ContentView.swift` and `EngBlogDigestApp.swift`
-   Xcode generates, and add the real ones from `EngBlogDigest/` (and
-   `EngBlogDigest/Views/`) to the target instead.
+2. Product Name: `TechBlogDigest`. Interface: SwiftUI. Save it into this
+   `iosApp/` directory (so `iosApp/TechBlogDigest.xcodeproj` sits next to the
+   `TechBlogDigest/` source folder already here).
+3. Delete the placeholder `ContentView.swift` and `TechBlogDigestApp.swift`
+   Xcode generates, and add the real ones from `TechBlogDigest/` (and
+   `TechBlogDigest/Views/`) to the target instead.
 
 ## 2. Link the shared KMP framework
 
 This project uses the plain "regular framework" integration (no CocoaPods).
-In the `EngBlogDigest` target:
+In the `TechBlogDigest` target:
 
 1. **Build Phases** → **+** → **New Run Script Phase**, placed *before*
    Compile Sources, with:

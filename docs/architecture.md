@@ -1,4 +1,4 @@
-# Engineering Blog Digest — Architecture & Plan
+# Tech Blog Digest — Architecture & Plan
 
 ## 1. Product summary
 

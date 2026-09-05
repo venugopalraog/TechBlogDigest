@@ -5,7 +5,7 @@ import SwiftUI
 // and AppContainer/FeedViewModel's calls into it match the generated header.
 
 @main
-struct EngBlogDigestApp: App {
+struct TechBlogDigestApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()

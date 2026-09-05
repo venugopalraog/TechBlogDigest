@@ -1,4 +1,4 @@
-# Engineering Blog Digest
+# Tech Blog Digest
 
 Cross-platform (Android + iOS, Kotlin Multiplatform) app that aggregates
 posts from major engineering blogs, summarizes them via AI, and shows a
