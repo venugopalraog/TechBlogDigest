@@ -16,15 +16,17 @@ private val logger = LoggerFactory.getLogger("IngestCli")
  * also call the Claude API for a summary + tags on each new post
  * (requires ANTHROPIC_API_KEY).
  */
-fun main(args: Array<String>) = runBlocking {
-    DatabaseFactory.init()
+fun main(args: Array<String>) {
+    runBlocking {
+        DatabaseFactory.init()
 
-    val withSummary = "--summarize" in args
-    val summarizer = if (withSummary) ClaudeSummarizer() else null
+        val withSummary = "--summarize" in args
+        val summarizer = if (withSummary) ClaudeSummarizer() else null
 
-    val service = FeedIngestionService(summarizer)
-    val inserted = service.ingestAll()
+        val service = FeedIngestionService(summarizer)
+        val inserted = service.ingestAll()
 
-    logger.info("Ingestion complete: {} new post(s) stored{}", inserted, if (withSummary) " (summarized)" else "")
-    summarizer?.close()
+        logger.info("Ingestion complete: {} new post(s) stored{}", inserted, if (withSummary) " (summarized)" else "")
+        summarizer?.close()
+    }
 }
