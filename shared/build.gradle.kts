@@ -16,10 +16,18 @@ kotlin {
         }
     }
 
-    // iOS targets (iosX64, iosArm64, iosSimulatorArm64) are added when this module is
-    // next built from macOS with Xcode installed — Kotlin/Native can't cross-compile
-    // Apple targets from Windows. iosMain/ is kept as a placeholder for that actual
-    // implementation (DriverFactory, HTTP engine) once a Mac is available.
+    // Kotlin/Native can't cross-compile Apple targets from Windows, so these are only
+    // configured when Gradle actually runs on macOS — that keeps every build on this
+    // Windows dev machine green while making the module build correctly for iOS the
+    // moment it's opened on a Mac with Xcode installed.
+    val isMacOs = org.gradle.internal.os.OperatingSystem.current().isMacOsX
+    if (isMacOs) {
+        listOf(iosX64(), iosArm64(), iosSimulatorArm64()).forEach { target ->
+            target.binaries.framework {
+                baseName = "Shared"
+            }
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -60,6 +68,16 @@ kotlin {
         }
         val jvmTest by getting {
             kotlin.srcDir("jvmTest")
+        }
+
+        if (isMacOs) {
+            val iosMain by getting {
+                kotlin.srcDir("iosMain")
+                dependencies {
+                    implementation("io.ktor:ktor-client-darwin:3.0.1")
+                    implementation("app.cash.sqldelight:native-driver:2.0.2")
+                }
+            }
         }
     }
 }
