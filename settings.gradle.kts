@@ -16,4 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "engineering-blog-app"
 
 include(":shared")
-// androidApp is added in Phase 3; backend is its own standalone Gradle build (see backend/).
+include(":androidApp")
+// backend is its own standalone Gradle build (see backend/).

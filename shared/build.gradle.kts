@@ -1,8 +1,8 @@
 plugins {
-    kotlin("multiplatform") version "2.0.21"
-    kotlin("plugin.serialization") version "2.0.21"
-    id("com.android.library") version "8.5.2"
-    id("app.cash.sqldelight") version "2.0.2"
+    kotlin("multiplatform")
+    kotlin("plugin.serialization")
+    id("com.android.library")
+    id("app.cash.sqldelight")
 }
 
 kotlin {
@@ -25,13 +25,15 @@ kotlin {
         val commonMain by getting {
             kotlin.srcDir("commonMain")
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
-                implementation("io.ktor:ktor-client-core:3.0.1")
+                // These all appear in public signatures (FeedRepository, ApiService, Post,
+                // DriverFactory), so consumers like androidApp need them at compile time too.
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+                api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+                api("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+                api("io.ktor:ktor-client-core:3.0.1")
+                api("app.cash.sqldelight:runtime:2.0.2")
                 implementation("io.ktor:ktor-client-content-negotiation:3.0.1")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.1")
-                implementation("app.cash.sqldelight:runtime:2.0.2")
                 implementation("app.cash.sqldelight:coroutines-extensions:2.0.2")
             }
         }
