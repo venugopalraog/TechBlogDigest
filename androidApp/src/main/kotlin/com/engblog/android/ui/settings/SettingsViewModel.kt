@@ -27,6 +27,11 @@ class SettingsViewModel(
         }
     }
 
+    /** Call once the "saved" confirmation has been shown, so it doesn't re-fire. */
+    fun consumeSavedEvent() {
+        _saved.value = false
+    }
+
     fun refreshFeedNow() {
         viewModelScope.launch {
             runCatching { repository.refresh() }
