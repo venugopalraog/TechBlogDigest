@@ -8,6 +8,7 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import io.ktor.server.plugins.calllogging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.server.plugins.cors.routing.CORS
 import org.slf4j.event.Level
 
 fun main() {
@@ -20,6 +21,12 @@ fun Application.module() {
 
     install(ContentNegotiation) { json() }
     install(CallLogging) { level = Level.INFO }
+    // Dev-only: the webApp (Kotlin/Wasm, served from its own origin) needs CORS to
+    // call this API from a browser. Scope this down before any public deployment.
+    install(CORS) {
+        anyHost()
+        allowHeader(io.ktor.http.HttpHeaders.ContentType)
+    }
 
     configureRouting()
 }

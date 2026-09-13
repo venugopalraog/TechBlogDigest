@@ -29,6 +29,11 @@ kotlin {
         }
     }
 
+    // Not adding a wasmJs target here: SQLDelight 2.0.2's runtime has no wasmJs variant
+    // at all (real support needs 2.1.0+, an async query API, and a browser SQL.js/web-
+    // worker driver — a bigger lift than fits this pass). webApp is a standalone module
+    // instead, with its own small copies of just the model + API client it needs.
+
     sourceSets {
         val commonMain by getting {
             kotlin.srcDir("commonMain")

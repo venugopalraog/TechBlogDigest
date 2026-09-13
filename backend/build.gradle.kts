@@ -28,6 +28,7 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-server-call-logging")
     implementation("io.ktor:ktor-server-status-pages")
+    implementation("io.ktor:ktor-server-cors")
 
     // Ktor client (feed polling + Claude API calls)
     implementation("io.ktor:ktor-client-core")
